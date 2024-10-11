@@ -11,7 +11,6 @@ type ContentListProps = {
 };
 
 const ContentList: FC<ContentListProps> = (props) => {
-  // stáhnout data a poslat do listu
   const { pathName } = props;
 
   const { loading, error, data, refetch } = useQuery(CONTENT_QUERY, { variables: { path: pathName}});

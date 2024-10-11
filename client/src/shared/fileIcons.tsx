@@ -6,7 +6,6 @@ import VideoFileIcon from '@mui/icons-material/VideoFile';
 
 export const fileIcons: { [key: string]: JSX.Element} = {
   pdf: <PdfIcon />,
-  PDF: <PdfIcon />,
   jpg: <ImageIcon />,
   jpeg: <ImageIcon />,
   png: <ImageIcon />,
