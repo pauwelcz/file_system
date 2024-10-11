@@ -7,4 +7,7 @@ export class Item {
 
   @Field(() => Boolean)
   isDirectory: boolean;
+
+  @Field({ nullable: true })
+  extension: string;
 }

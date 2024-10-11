@@ -12,9 +12,11 @@ export class PathService {
       });
 
       const contentObject: Item[] = content.map((item) => {
+        const isDirectory = !item.isFile();
         return {
           name: item.name,
-          isDirectory: !item.isFile(),
+          isDirectory,
+          extension: this.getExtension(item.name, isDirectory),
         };
       });
 
@@ -22,5 +24,10 @@ export class PathService {
     } catch (error) {
       throw new BadRequestException(`Path ${pathName} does not exists.`);
     }
+  }
+
+  private getExtension(name: string, isDirectory: boolean) {
+    const splitted = name.split('.');
+    return isDirectory ? null : splitted[splitted.length - 1];
   }
 }
