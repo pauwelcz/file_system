@@ -7,17 +7,36 @@ import * as path from 'path';
 export class PathService {
   async getContent(pathName: string): Promise<Item[]> {
     try {
-      const content = await fs.readdir(path.join('/', pathName), {
-        withFileTypes: true,
-      });
+      const content = await fs.readdir(
+        path.join('/', decodeURIComponent(pathName)),
+        {
+          withFileTypes: true,
+        },
+      );
 
-      const contentObject: Item[] = content.map((item) => {
+      const contentObject: Item[] = [];
+
+      if (pathName !== '' && pathName !== '/') {
+        const splittedPathName = pathName.split('/');
+
+        contentObject.push({
+          path: splittedPathName
+            .slice(0, splittedPathName.length - 1)
+            .join('/'),
+          name: '..',
+          isDirectory: true,
+          extension: '',
+        });
+      }
+
+      content.forEach((item) => {
         const isDirectory = !item.isFile();
-        return {
+        contentObject.push({
+          path: pathName,
           name: item.name,
           isDirectory,
           extension: this.getExtension(item.name, isDirectory),
-        };
+        });
       });
 
       return contentObject;
