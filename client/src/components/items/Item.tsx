@@ -4,8 +4,9 @@ import Paper from '@mui/material/Paper';
 import { COLORS } from '../../types/colors';
 import { gridContainerStyle, gridItemStyle } from '../../styles';
 import { ItemObject } from '../../types/item-type';
-import { Link } from 'react-router-dom';
-import { FileIcon, defaultStyles } from 'react-file-icon';
+import FolderIcon from '@mui/icons-material/Folder';
+import FolderIconOutlined from '@mui/icons-material/Folder';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 type ItemProps = {
   item: ItemObject;
@@ -14,7 +15,7 @@ type ItemProps = {
 
 const Item: FC<ItemProps> = (props) => {
   const { item } = props;
-  const { name } = item;
+  const { name, extension } = item;
 
   const [hover, setHover] = useState(false)
 
@@ -22,7 +23,16 @@ const Item: FC<ItemProps> = (props) => {
     
     <Paper style={{backgroundColor: hover ? COLORS.tertiary : COLORS.secondary, borderColor: 'black', margin: 1 }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <Grid container style={gridContainerStyle}>
+          <Grid item >
+          {extension ? (
+            <InsertDriveFileIcon />
+          ) : (
+            <FolderIcon />
+          )}
+          </Grid>
           <Grid item style={gridItemStyle}>
+            
+
               <div>
                 <strong>{name}</strong>
               </div>
