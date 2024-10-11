@@ -5,6 +5,9 @@ export class Item {
   @Field()
   name: string;
 
+  @Field()
+  path: string;
+
   @Field(() => Boolean)
   isDirectory: boolean;
 
