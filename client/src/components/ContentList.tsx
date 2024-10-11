@@ -5,6 +5,8 @@ import Paper from '@mui/material/Paper';
 import { paperStyle } from '../styles';
 import { ItemObject } from '../types/item-type';
 import Item from './items/Item';
+import SomethingWentWrong from './SomethingWentWrong';
+import Loading from './Loading';
 
 type ContentListProps = {
   pathName: string;
@@ -13,8 +15,11 @@ type ContentListProps = {
 const ContentList: FC<ContentListProps> = (props) => {
   const { pathName } = props;
 
-  const { loading, error, data, refetch } = useQuery(CONTENT_QUERY, { variables: { path: pathName}});
+  const { loading, error, data } = useQuery(CONTENT_QUERY, { variables: { path: pathName}});
   
+  if (error) return <SomethingWentWrong />;
+  if (loading) return <Loading />;
+
   return(
     <div>
       <h2>Content of <i>{pathName}</i></h2>
