@@ -29,15 +29,17 @@ export class PathService {
         });
       }
 
-      content.forEach((item) => {
-        const isDirectory = !item.isFile();
-        contentObject.push({
-          path: pathName,
-          name: item.name,
-          isDirectory,
-          extension: this.getExtension(item.name, isDirectory),
+      content
+        .filter((item) => !item.name.startsWith('.'))
+        .forEach((item) => {
+          const isDirectory = !item.isFile();
+          contentObject.push({
+            path: pathName,
+            name: item.name,
+            isDirectory,
+            extension: this.getExtension(item.name, isDirectory),
+          });
         });
-      });
 
       return contentObject;
     } catch (error) {
