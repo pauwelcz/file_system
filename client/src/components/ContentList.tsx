@@ -20,7 +20,7 @@ const ContentList: FC<ContentListProps> = (props) => {
   
   return(
     <div>
-      <h2>Content </h2>
+      <h2>Content of <i>{pathName}</i></h2>
       <Paper style={{...paperStyle, flex: 1, display: 'flex', flexDirection: 'column'}} >
         {data?.content.map((item: ItemObject, index: number) => {
           const cleanPath = `${item.path}/${item.name}`.split('/').filter((item) => item !== "").join('/');
