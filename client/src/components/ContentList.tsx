@@ -15,8 +15,6 @@ const ContentList: FC<ContentListProps> = (props) => {
   const { pathName } = props;
 
   const { loading, error, data, refetch } = useQuery(CONTENT_QUERY, { variables: { path: pathName}});
-
-
   
   return(
     <div>

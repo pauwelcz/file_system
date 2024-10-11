@@ -5,8 +5,9 @@ import { COLORS } from '../../types/colors';
 import { gridContainerStyle, gridItemStyle } from '../../styles';
 import { ItemObject } from '../../types/item-type';
 import FolderIcon from '@mui/icons-material/Folder';
-import FolderIconOutlined from '@mui/icons-material/Folder';
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import { fileIcons } from '../../shared/fileIcons';
+import { FileIcon } from 'react-file-icon';
+import InsertDriveFile from '@mui/icons-material/InsertDriveFile';
 
 type ItemProps = {
   item: ItemObject;
@@ -25,7 +26,7 @@ const Item: FC<ItemProps> = (props) => {
       <Grid container style={gridContainerStyle}>
           <Grid item >
           {extension ? (
-            <InsertDriveFileIcon />
+            fileIcons[extension.toLowerCase()] ?? <InsertDriveFile />
           ) : (
             <FolderIcon />
           )}
