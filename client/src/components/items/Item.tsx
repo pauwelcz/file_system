@@ -21,7 +21,7 @@ const Item: FC<ItemProps> = (props) => {
 
   return (
     
-    <Paper style={{backgroundColor: hover ? COLORS.tertiary : COLORS.secondary, borderColor: 'black', margin: 1 }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <Paper style={{backgroundColor: hover ? COLORS.primary : COLORS.secondary, borderColor: 'black', margin: 1 }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <Grid container style={gridContainerStyle}>
           <Grid item >
             {extension ? (
