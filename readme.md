@@ -47,7 +47,7 @@ This project is part of a technical round. Project demonstrates file system of d
 
 ### Project routes (Back End)
 
-#### GET content
+#### GET content(path: String!)
 
 This route serves to obtain a content of given path (if exists) or throws error.
 
